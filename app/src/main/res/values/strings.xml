@@ -1,0 +1,4 @@
+﻿<resources>
+    <string name="app_name">nodep project</string>
+    <string name="accessibility_service_description">Блокировка сайтов и приложений азартных игр.</string>
+</resources>

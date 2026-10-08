@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>nodep project</title>
+  <style>
+    body { background: #000; color: #fff; font-family: sans-serif; text-align: center; padding: 40px 20px; }
+    h1 { font-size: 28px; margin-bottom: 20px; }
+    button { background: #fff; color: #000; border: none; padding: 14px 24px; font-size: 16px; width: 100%; max-width: 300px; cursor: pointer; margin-top: 20px; }
+    .status { margin-top: 15px; font-size: 14px; opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <h1>nodep project</h1>
+  <p class="status" id="status">Проверка службы...</p>
+  <button id="btn" type="button">Включить защиту</button>
+  <script>
+    function check() {
+      if (window.AndroidBridge) {
+        var on = window.AndroidBridge.isAccessibilityServiceEnabled();
+        document.getElementById("status").innerText = on ? "Защита активна. Казино блокируются." : "Защита выключена!";
+        document.getElementById("btn").style.display = on ? "none" : "block";
+      }
+    }
+    document.getElementById("btn").onclick = function() {
+      if (window.AndroidBridge) window.AndroidBridge.openAccessibilitySettings();
+    };
+    setInterval(check, 1000);
+    check();
+  </script>
+</body>
+</html>

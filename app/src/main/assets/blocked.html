@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Заблокировано</title>
+  <style>
+    body { background: #000; color: #fff; font-family: sans-serif; text-align: center; padding: 50px 20px; }
+    h1 { font-size: 32px; color: #ff4444; }
+    p { font-size: 18px; margin: 20px 0; }
+    #host { font-weight: bold; color: #ffbb33; word-break: break-all; }
+    button { background: #fff; color: #000; border: none; padding: 15px 30px; font-size: 16px; cursor: pointer; margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <h1>nodep project</h1>
+  <p>Доступ к казино заблокирован</p>
+  <p id="host"></p>
+  <button onclick="if(window.AndroidBridge) window.AndroidBridge.closeTab();">Закрыть</button>
+  <script>
+    window.onBlockInfoReceived = function(h) { document.getElementById("host").innerText = h; };
+  </script>
+</body>
+</html>
